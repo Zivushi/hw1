@@ -56,6 +56,38 @@ void pqDestroy(PriorityQueue queue){
 }
 
 
+PriorityQueue pqCopy(PriorityQueue queue){
+    PriorityQueue new_queue = pqCreate(queue->copyPqElement,
+                                       queue->freePqElement,
+                                       queue->equalPqElements,
+                                       queue->copyPqElementPriority,
+                                       queue->freePqElementPriority,
+                                       queue->comparePqElementPriorities);
+    if(!new_queue){
+        return NULL;
+    }
+
+    for(ElementList head = queue->list , head_new = new_queue->list ; !head ;head=head->next,head_new=head_new->next){
+        head_new->element = queue->copyPqElement(head->element);
+        if(!head_new->element) {
+            pqDestroy(new_queue);
+            return NULL;
+        }
+        head_new->elementPriority = queue->copyPqElementPriority(head->elementPriority);
+        if(!head_new->elementPriority) {
+            pqDestroy(new_queue);
+            return NULL;
+        }
+    }
+
+
+
+
+
+}
+
+
+
 PriorityQueueResult pqInsert(PriorityQueue queue, PQElement element, PQElementPriority priority){
 
     if (!queue || !element || !priority) {
