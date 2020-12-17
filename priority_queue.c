@@ -67,23 +67,27 @@ PriorityQueue pqCopy(PriorityQueue queue){
         return NULL;
     }
 
-    for(ElementList head = queue->list , head_new = new_queue->list ; !head ;head=head->next,head_new=head_new->next){
-        head_new->element = queue->copyPqElement(head->element);
-        if(!head_new->element) {
+    for(ElementList head = queue->list->next, head_new = new_queue->list ;head != NULL
+            ;head = head->next, head_new = head_new->next) {
+        ElementList node = malloc(sizeof((*node)));
+        if(!node) {
             pqDestroy(new_queue);
             return NULL;
         }
-        head_new->elementPriority = queue->copyPqElementPriority(head->elementPriority);
-        if(!head_new->elementPriority) {
+        node->next = NULL;
+        head_new->next = node;
+        node->element = queue->copyPqElement(head->element);
+        if(!node->element) {
+            pqDestroy(new_queue);
+            return NULL;
+        }
+        node->elementPriority = queue->copyPqElementPriority(head->elementPriority);
+        if(!node->elementPriority) {
             pqDestroy(new_queue);
             return NULL;
         }
     }
-
-
-
-
-
+    return queue;
 }
 
 

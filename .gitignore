@@ -1,5 +1,6 @@
 l.pdf
 .idea
+CMakeLists.txt
 # Prerequisites
 *.d
 
