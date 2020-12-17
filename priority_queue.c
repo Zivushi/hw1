@@ -139,11 +139,75 @@ bool pqContains(PriorityQueue queue, PQElement element){
     if (!queue || !element){
         return false;
     }
+    ElementList head = queue->list->next;
+    while(head) {
+        if (queue->equalPqElements(element, head->element) == 0) {
+            return true;
+        }
+        head = head->next;
+    }
+    return false;
+}
+
+PriorityQueueResult pqChangePriority(PriorityQueue queue, PQElement element,
+                                     PQElementPriority old_priority, PQElementPriority new_priority){
+    if (!queue || !element || !old_priority || !new_priority) {
+        return PQ_NULL_ARGUMENT;
+    }
+    if (queue->comparePqElementPriorities == 0) {
+        return PQ_SUCCESS;
+    }
+
+    for(ElementList head = queue->list; head->next != NULL &&
+            queue->comparePqElementPriorities(old_priority, head->next->elementPriority) <= 0;
+                head = head->next) {
+        if (queue->comparePqElementPriorities(old_priority, head->next->elementPriority) == 0) {
+            if (queue->equalPqElements(head->next->element, element) == 0) {
+                ElementList tmp = head->next;
+                head->next = head->next->next;
+                queue->freePqElement(tmp->element);
+                queue->freePqElementPriority(tmp->elementPriority);
+                free(tmp);
+                return pqInsert(queue,element,new_priority);
+            }
+        }
+    }
+    return PQ_ELEMENT_DOES_NOT_EXISTS;
+
+}
+
+PriorityQueueResult pqRemove(PriorityQueue queue){
+    if (!queue) {
+        return PQ_NULL_ARGUMENT;
+    }
+    ElementList tmp = queue->list->next;
+    if (tmp == NULL){
+        return PQ_SUCCESS;
+    }
+    queue->list->next = tmp->next;
+    queue->freePqElement(tmp->element);
+    queue->freePqElementPriority(tmp->elementPriority);
+    free(tmp);
+    return PQ_SUCCESS;
+}
+
+
+
+
+PriorityQueueResult pqRemoveElement(PriorityQueue queue, PQElement element){
+    if (!queue || !element) {
+        return PQ_NULL_ARGUMENT;
+    }
+
+    if (!pqContains(queue,element)) {
+        return PQ_ELEMENT_DOES_NOT_EXISTS;
+    }
 
 
 
 
 }
+
 
 
 
