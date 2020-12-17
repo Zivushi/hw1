@@ -1,8 +1,8 @@
 
-#include <assert.h>
 #include "priority_queue.h"
 #include <stdlib.h>
 
+#define NULL_QUEUE -1
 
 typedef struct element_list_t {
     PQElement element;
@@ -19,6 +19,7 @@ struct PriorityQueue_t {
     FreePQElementPriority freePqElementPriority;
     EqualPQElements equalPqElements;
     ComparePQElementPriorities comparePqElementPriorities;
+    int queueSize;
 };
 
 PriorityQueue pqCreate(CopyPQElement copy_element,
@@ -44,6 +45,7 @@ PriorityQueue pqCreate(CopyPQElement copy_element,
     queue->copyPqElementPriority = copy_priority;
     queue->copyPqElement = copy_element;
     queue->list->next = NULL;
+    queue->queueSize = 0;
     return queue;
 }
 
@@ -87,7 +89,8 @@ PriorityQueue pqCopy(PriorityQueue queue){
             return NULL;
         }
     }
-    return queue;
+    new_queue->queueSize = queue->queueSize;
+    return new_queue;
 }
 
 
@@ -123,6 +126,24 @@ PriorityQueueResult pqInsert(PriorityQueue queue, PQElement element, PQElementPr
             head->next = node;
         }
     }
+    queue->queueSize++;
     return PQ_SUCCESS;
 }
+
+
+int pqGetSize(PriorityQueue queue){
+    return queue ? queue->queueSize : NULL_QUEUE;
+}
+
+bool pqContains(PriorityQueue queue, PQElement element){
+    if (!queue || !element){
+        return false;
+    }
+
+
+
+
+}
+
+
 
