@@ -152,13 +152,15 @@ PriorityQueueResult pqInsert(PriorityQueue queue, PQElement element, PQElementPr
     }
 
     for(ElementList head = queue->list ; head->next != node ; head = head->next) {
-        if (!head->next) {
+        if (head->next == NULL) {
             head->next = node;
             node->next = NULL;
+            break;
         }
         else if (queue->comparePqElementPriorities(node->elementPriority, head->next->elementPriority) > 0) {
             node->next = head->next;
             head->next = node;
+            break;
         }
     }
     queue->queueSize++;
