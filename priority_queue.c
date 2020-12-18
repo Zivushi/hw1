@@ -242,16 +242,16 @@ PQElement pqGetFirst(PriorityQueue queue){
     if (!queue || !queue->queueSize) {
         return NULL;
     }
-    queue->iterator = queue->list;
-    return queue->iterator->next->element;
+    queue->iterator = queue->list->next;
+    return queue->iterator->element;
 }
 
-PQElement pqGetNext(PriorityQueue queue){
-    if (!queue) {
+PQElement pqGetNext(PriorityQueue queue) {
+    if (!queue || !queue->iterator->next) {
         return NULL;
     }
     queue->iterator = queue->iterator->next;
-    return queue->iterator->next->element;
+    return queue->iterator->element;
 }
 
 PriorityQueueResult pqClear(PriorityQueue queue) {
