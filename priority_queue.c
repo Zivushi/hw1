@@ -60,6 +60,9 @@ void pqDestroy(PriorityQueue queue){
 
 
 PriorityQueue pqCopy(PriorityQueue queue){
+    if (!queue) {
+        return NULL;
+    }
     PriorityQueue new_queue = pqCreate(queue->copyPqElement,
                                        queue->freePqElement,
                                        queue->equalPqElements,
@@ -78,17 +81,20 @@ PriorityQueue pqCopy(PriorityQueue queue){
             return NULL;
         }
         node->next = NULL;
-        head_new->next = node;
         node->element = queue->copyPqElement(head->element);
         if(!node->element) {
+            free(node);
             pqDestroy(new_queue);
             return NULL;
         }
         node->elementPriority = queue->copyPqElementPriority(head->elementPriority);
         if(!node->elementPriority) {
+            queue->freePqElement(node->element);
+            free(node);
             pqDestroy(new_queue);
             return NULL;
         }
+        head_new->next = node;
     }
     new_queue->queueSize = queue->queueSize;
     return new_queue;
