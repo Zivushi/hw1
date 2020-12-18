@@ -39,6 +39,12 @@ PriorityQueue pqCreate(CopyPQElement copy_element,
     if (!queue) {
         return NULL;
     }
+
+    queue->list = malloc(sizeof(*queue->list));
+    if (!queue->list) {
+        return NULL;
+    }
+
     queue->comparePqElementPriorities = compare_priorities;
     queue->equalPqElements = equal_elements;
     queue->freePqElementPriority = free_priority;
@@ -55,6 +61,7 @@ void pqDestroy(PriorityQueue queue){
         return;
     }
     pqClear(queue);
+    free(queue->list);
     free(queue);
 }
 
