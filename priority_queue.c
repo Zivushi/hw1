@@ -194,6 +194,7 @@ PriorityQueueResult pqChangePriority(PriorityQueue queue, PQElement element,
                 queue->freePqElement(tmp->element);
                 queue->freePqElementPriority(tmp->elementPriority);
                 free(tmp);
+                queue->queueSize--;
                 return pqInsert(queue,element,new_priority);
             }
         }
