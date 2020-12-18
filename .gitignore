@@ -8,6 +8,7 @@ l.pdf
 >>>>>>> cac37b464b3d1589a2b6ed5a2b4ae2d01a8e4136
 =======
 CMakeLists.txt
+
 >>>>>>> ffd459b741d431f8f8ed77d53d029d3042e47d38
 # Prerequisites
 *.d
@@ -61,3 +62,31 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+build/cmake_install.cmake
+build/CMakeCache.txt
+build/compile_commands.json
+build/Makefile
+build/.cmake/api/v1/query/client-vscode/query.json
+build/.cmake/api/v1/reply/cache-v2-0898417821afcdd005b3.json
+build/.cmake/api/v1/reply/codemodel-v2-c8e6f3d97f167f966dec.json
+build/.cmake/api/v1/reply/index-2020-12-18T11-46-39-0373.json
+build/.cmake/api/v1/reply/target-queue-Debug-295614f48ab949fc4176.json
+build/CMakeFiles/cmake.check_cache
+build/CMakeFiles/CMakeDirectoryInformation.cmake
+build/CMakeFiles/CMakeOutput.log
+build/CMakeFiles/Makefile.cmake
+build/CMakeFiles/Makefile2
+build/CMakeFiles/progress.marks
+build/CMakeFiles/TargetDirectories.txt
+build/CMakeFiles/3.17.0/CMakeCCompiler.cmake
+build/CMakeFiles/3.17.0/CMakeDetermineCompilerABI_C.bin
+build/CMakeFiles/3.17.0/CMakeSystem.cmake
+build/CMakeFiles/3.17.0/CompilerIdC/CMakeCCompilerId.c
+build/CMakeFiles/queue.dir/build.make
+build/CMakeFiles/queue.dir/cmake_clean.cmake
+build/CMakeFiles/queue.dir/depend.make
+build/CMakeFiles/queue.dir/DependInfo.cmake
+build/CMakeFiles/queue.dir/flags.make
+build/CMakeFiles/queue.dir/link.txt
+build/CMakeFiles/queue.dir/progress.make
+.vscode/settings.json
