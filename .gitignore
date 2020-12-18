@@ -57,6 +57,7 @@ CMakeLists.txt
 # Kernel Module Compile Results
 *.mod*
 *.cmd
+build/
 .tmp_versions/
 modules.order
 Module.symvers
