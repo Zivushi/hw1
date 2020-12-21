@@ -91,3 +91,65 @@ build/CMakeFiles/queue.dir/flags.make
 build/CMakeFiles/queue.dir/link.txt
 build/CMakeFiles/queue.dir/progress.make
 .vscode/settings.json
+.idea/
+
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+CMakeLists.txt
+cmake-build-debug
+.idea/
+build/
+ex1_winter_20-21-v6.pdf
+.vscode/
+.vscode/settings.json
+.idea/newmtm.iml
